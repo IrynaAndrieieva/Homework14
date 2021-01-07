@@ -15,12 +15,17 @@ namespace Homework14
 
             for (var i = 0; i < 10; i++)
             {
-                collection.Add(1);
+                collection.Add(i);
             }
 
             var result = from item in collection
                          where item < 5
                          select item;
+
+            foreach (var item in result)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }

@@ -11,7 +11,13 @@ namespace Homework14
     {
         static void Main(string[] args)
         {
-            DisplayLargesWhisLinq(@"D:\Программы");
+
+            LINQ LINQ = new LINQ();
+            LINQ.MetodLinq();
+
+            //DisplayLargesWhisLinq(@"D:\Программы");
+
+
             Console.ReadKey();
         }
 
