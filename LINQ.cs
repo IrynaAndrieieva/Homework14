@@ -11,10 +11,10 @@ namespace Homework14
         Random rnd = new Random();
 
         public void MetodLinq()
-        {            
-            var collection = new List<Product>();
+        {
+            var products = new List<Product>();
 
-            for (var i = 0; i < 100; i++)
+            for (var i = 0; i < 10; i++)
             {
                 var product = new Product()
                 {
@@ -22,28 +22,45 @@ namespace Homework14
                     Energy = rnd.Next(0, 500)
                 };
 
-                collection.Add(product);
+                products.Add(product);
             }
 
-            var result = from item in collection
-                         where item.Energy < 200
-                         select item;
+            Console.WriteLine("Test1");
 
-            var result2 = collection.Where(item => item.Energy < 200)
-                                    .OrderBy(item => item.Energy);
+            var whereAndOrder = products.Where(item => item.Energy < 200)
+                                    .OrderBy(item => item.Energy)
+                                    .ThenBy(product => product.Name);
 
-            foreach (var item in result)
+            foreach (var item in whereAndOrder)
             {
-                
+
                 Console.WriteLine(item);
             }
 
             Console.WriteLine("__________");
+            Console.WriteLine("Test2");
 
-            foreach (var item in result2)
+            var selectCollection = products.Select(product => product.Energy)
+                                           .OrderByDescending(product => product);
+                                           
+            foreach (var item in selectCollection)
             {
-                
+
                 Console.WriteLine(item);
+            }
+
+            Console.WriteLine("__________");
+            Console.WriteLine("Test3");
+
+            var groupByCollection = products.GroupBy(product => product.Energy);
+
+            foreach (var group in groupByCollection)
+            {
+                Console.WriteLine($"Key: {group.Key}");
+                foreach(var item in group)
+                {
+                    Console.WriteLine($"\t{item}");
+                }
             }
         }
     }
