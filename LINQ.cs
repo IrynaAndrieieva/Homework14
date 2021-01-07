@@ -62,6 +62,22 @@ namespace Homework14
                     Console.WriteLine($"\t{item}");
                 }
             }
+
+            Console.WriteLine("__________");
+            Console.WriteLine("Test4");
+
+            products.Reverse();
+
+            foreach (var item in products)
+            {
+
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("__________");
+
+            Console.WriteLine($"Test5: {products.All(item => item.Energy == 10)}");
+            Console.WriteLine($"Test6: {products.Any(item => item.Energy == 10)}");
         }
     }
 }
