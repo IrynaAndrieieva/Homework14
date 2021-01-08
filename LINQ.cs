@@ -25,6 +25,7 @@ namespace Homework14
                 products.Add(product);
             }
 
+
             Console.WriteLine("Test1");
 
             var whereAndOrder = products.Where(item => item.Energy < 200)
@@ -42,7 +43,7 @@ namespace Homework14
 
             var selectCollection = products.Select(product => product.Energy)
                                            .OrderByDescending(product => product);
-                                           
+
             foreach (var item in selectCollection)
             {
 
@@ -50,21 +51,38 @@ namespace Homework14
             }
 
             Console.WriteLine("__________");
-            Console.WriteLine("Test3");
+            Console.WriteLine("Test First");
+
+            var first = products.First();
+
+            Console.WriteLine(first);
+
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Last and LastOrDefault ");
+
+            var last = products.Last();
+            Console.WriteLine(last);
+
+            var lastOrDef = products.LastOrDefault();
+            Console.WriteLine(lastOrDef);
+
+            Console.WriteLine("__________");
+            Console.WriteLine("Test GroupBy");
 
             var groupByCollection = products.GroupBy(product => product.Energy);
 
             foreach (var group in groupByCollection)
             {
                 Console.WriteLine($"Key: {group.Key}");
-                foreach(var item in group)
+                foreach (var item in group)
                 {
                     Console.WriteLine($"\t{item}");
                 }
             }
 
+           
             Console.WriteLine("__________");
-            Console.WriteLine("Test4");
+            Console.WriteLine("Test Reverse");
 
             products.Reverse();
 
@@ -76,8 +94,60 @@ namespace Homework14
 
             Console.WriteLine("__________");
 
-            Console.WriteLine($"Test5: {products.All(item => item.Energy == 10)}");
-            Console.WriteLine($"Test6: {products.Any(item => item.Energy == 10)}");
+            Console.WriteLine($"Test All: {products.All(item => item.Energy == 10)}");
+            Console.WriteLine($"Test Any: {products.Any(item => item.Energy == 10)}");
+
+            var prod = new Product();
+            Console.WriteLine($"Test Contains: {products.Contains(prod)}"); //не принадлежить коллекции products
+
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Union. Before union");
+
+            var array = new int[] { 1, 2, 3, 4, 5 };
+            var array2 = new int[] { 1, 2, 3, 7, 8, 9 };
+
+            foreach (var item in array)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("After union");
+            var union = array.Union(array2);
+
+            foreach (var item in union)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Intersect");
+
+            var intersect = array.Intersect(array2);
+
+            foreach (var item in intersect)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Except");
+
+            var except = array2.Except(array);
+
+            foreach (var item in except)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Skip and Take");
+
+            var skipAndTake = array.Skip(2).Take(1);
+
+            foreach (var item in skipAndTake)
+            {
+                Console.WriteLine(item);
+            }
+
         }
     }
 }
