@@ -19,7 +19,7 @@ namespace Homework14
                 var product = new Product()
                 {
                     Name = "Product" + i,
-                    Energy = rnd.Next(0, 500)
+                    Energy = rnd.Next(0, 101)
                 };
 
                 products.Add(product);
@@ -148,6 +148,19 @@ namespace Homework14
                 Console.WriteLine(item);
             }
 
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Single Or Default");
+
+            var single = products.SingleOrDefault(p => p.Name == "Product9");
+
+            Console.WriteLine(single);
+
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Element At");
+
+            var elementAt = products.ElementAt(5);
+
+            Console.WriteLine(elementAt);
         }
     }
 }
