@@ -18,6 +18,11 @@ namespace Homework14
             Count = 0;
         }
 
+        public CustomList(IEnumerable<T> collection)
+        {
+          
+        }
+
         private void Resize(int numberOfElements)
         {
             int desiredCapacity = this.Count + numberOfElements;
