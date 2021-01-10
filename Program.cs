@@ -12,7 +12,8 @@ namespace Homework14
         static void Main(string[] args)
         {
             ChapOne.MetodLinq();
-           
+            ChapOne.Asynchro();
+
             Console.ReadKey();
         }
 

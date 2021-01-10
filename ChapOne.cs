@@ -19,7 +19,8 @@ namespace Homework14
                 var product = new Product()
                 {
                     Name = "Product" + i,
-                    Energy = rnd.Next(0, 101)
+                    Energy = rnd.Next(0, 101),
+                    ID = i
                 };
 
                 products.Add(product);
@@ -28,9 +29,9 @@ namespace Homework14
 
             Console.WriteLine("Test1");
 
-            IReadOnlyCollection<Product> whereAndOrder = products.Where(item => item.Energy < 200)
+            var whereAndOrder = new CustomList<Product> (products.Where(item => item.Energy < 200)
                                     .OrderBy(item => item.Energy)
-                                    .ThenBy(product => product.Name).ToList().AsReadOnly();
+                                    .ThenBy(product => product.Name).ToList().AsReadOnly());
 
             foreach (var item in whereAndOrder)
             {
@@ -160,8 +161,50 @@ namespace Homework14
 
             var elementAt = products.ElementAt(5);
 
-            Console.WriteLine(elementAt);
+            Console.WriteLine(elementAt);           
         }
-     
+
+        static public async Task Asynchro()
+        {
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Add Async");
+
+            var products = new CustomList<Product>();
+
+            for (var i = 0; i < 10; i++)
+            {
+                var product = new Product()
+                {
+                    Name = "Product" + i,
+                    Energy = rnd.Next(0, 101),
+                    ID = i
+                };
+
+                await products.AddAsync(product);
+            }
+
+            foreach (var p in products)
+            {
+                Console.WriteLine($"{p.Name}: {p.Energy}");
+            }
+            
+            Console.WriteLine("__________");
+            Console.WriteLine("Test AddRangeAsync");
+
+            var testProduct = new List<Product>();
+
+            await products.AddRangeAsync(testProduct);
+            Console.WriteLine($"{products.Count}");
+
+            Console.WriteLine("__________");
+            Console.WriteLine("Test RemoveItemAsync");
+
+            var productToDete = products.GetByIndex(6);
+
+            await products.RemoveItemAsync(productToDete);
+
+            Console.WriteLine(productToDete);    
+        }
+
     }
 }

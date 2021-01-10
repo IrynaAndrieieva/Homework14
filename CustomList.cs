@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Homework14
@@ -10,23 +11,25 @@ namespace Homework14
     public class CustomList<T> : ICustomList<T>, IEnumerable<T>, IEnumerable where T : IComparable 
     {
         private T[] Data;
-        public int Count { get; private set; }
-        private int Capacity => Data.Length;
+        public int Count { get; private set; }        
         public CustomList()
         {
             Data = new T[10];
             Count = 0;
         }
 
-        public CustomList(IEnumerable<T> collection)
+        public CustomList(IReadOnlyCollection<T> readOnlycollection)
         {
-          
+            Data = new T[10];
+            Count = 0;
+            AddRange(readOnlycollection);
         }
+
 
         private void Resize(int numberOfElements)
         {
             int desiredCapacity = this.Count + numberOfElements;
-            if (this.Capacity < desiredCapacity)
+            if (this.Data.Length < desiredCapacity)
             {
                 var ourList = this.Data;
                 this.Data = new T[desiredCapacity + 10];
@@ -45,6 +48,16 @@ namespace Homework14
         }
 
         public void AddRange(ICollection<T> collection)
+        {
+            this.Resize(collection.Count);
+            foreach (var item in collection)
+            {
+                this.Data[Count] = item;
+                this.Count++;
+            }
+        }
+
+        public void AddRange(IReadOnlyCollection<T> collection)
         {
             this.Resize(collection.Count);
             foreach (var item in collection)
@@ -101,6 +114,17 @@ namespace Homework14
             }
             this.Count--;
         }
+
+        public T GetByIndex(int index)
+        {
+            if (index < 0 || index >= this.Count)
+            {
+                throw new Exception();
+            }
+
+            return this.Data[index];            
+        }
+
         public void Print()
         {
             Console.WriteLine("Your custom list:");
@@ -139,6 +163,46 @@ namespace Homework14
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();
+        }
+
+        //AddAsync , AddRangeAsync, RemoveItemAsync
+
+        static Random rnd = new Random();
+        int delay = rnd.Next(100, 500);
+
+        public async Task AddAsync(T item)
+        { 
+            Thread.Sleep(delay);
+
+            this.Resize(1);
+            this.Data[Count] = item;
+            this.Count++;
+        }
+
+        public async Task AddRangeAsync(ICollection<T> collection)
+        {
+            Thread.Sleep(delay);
+
+            this.Resize(collection.Count);
+            foreach (var item in collection)
+            {
+                this.Data[Count] = item;
+                this.Count++;
+            }          
+        }
+
+        public async Task<bool> RemoveItemAsync(T item)
+        {
+            Thread.Sleep(delay);
+
+            var index = this.IndexOf(item);
+
+            if (index == -1)
+            {
+                return false;
+            }
+            this.RemoveAt(index); // dry
+            return true;           
         }
     }
 }
