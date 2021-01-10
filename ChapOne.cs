@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Homework14
 {
-    public class LINQ
+    static class ChapOne
     {
-        Random rnd = new Random();
+        static Random rnd = new Random();
 
-        public void MetodLinq()
+        static public void MetodLinq()
         {
-            var products = new List<Product>();
+            var products = new CustomList<Product>();
 
             for (var i = 0; i < 10; i++)
             {
@@ -28,9 +28,9 @@ namespace Homework14
 
             Console.WriteLine("Test1");
 
-            var whereAndOrder = products.Where(item => item.Energy < 200)
+            IReadOnlyCollection<Product> whereAndOrder = products.Where(item => item.Energy < 200)
                                     .OrderBy(item => item.Energy)
-                                    .ThenBy(product => product.Name);
+                                    .ThenBy(product => product.Name).ToList().AsReadOnly();
 
             foreach (var item in whereAndOrder)
             {
@@ -80,7 +80,7 @@ namespace Homework14
                 }
             }
 
-           
+
             Console.WriteLine("__________");
             Console.WriteLine("Test Reverse");
 
@@ -162,5 +162,6 @@ namespace Homework14
 
             Console.WriteLine(elementAt);
         }
+     
     }
 }

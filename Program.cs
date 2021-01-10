@@ -11,28 +11,26 @@ namespace Homework14
     {
         static void Main(string[] args)
         {
-
-            LINQ LINQ = new LINQ();
-            LINQ.MetodLinq();
-
-            //DisplayLargesWhisLinq(@"D:\Программы");
-
-
+            ChapOne.MetodLinq();
+           
             Console.ReadKey();
         }
 
-        private static void DisplayLargesWhisLinq(string pathToDir)
-        {
-            IReadOnlyList<FileInfo> orderedFiles = new DirectoryInfo(pathToDir)
-                .GetFiles()
-                .OrderBy(file => file.Length)
-                .Take(5)
-                .ToList();
+        //private static void DisplayLargesWhisLinq(string pathToDir)
+        //{
+        //    IReadOnlyList<FileInfo> orderedFiles = new DirectoryInfo(pathToDir)
+        //        .GetFiles()
+        //        .OrderBy(file => file.Length)
+        //        .Take(5)
+        //        .ToList();
 
-            foreach (var file in orderedFiles)
-            {
-                Console.WriteLine($"{file.Name} weights {file.Length}");
-            }
-        }
+        //    foreach (var file in orderedFiles)
+        //    {
+        //        Console.WriteLine($"{file.Name} weights {file.Length}");
+        //    }
+           
+        //}
+
+
     }
 }

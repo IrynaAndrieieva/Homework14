@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LINQ.cs" />
+    <Compile Include="ChapOne.cs" />
+    <Compile Include="CustomList.cs" />
+    <Compile Include="ICustomList.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
