@@ -45,7 +45,7 @@
                     using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
                     {
                         sw.WriteLine(text);
-                    }
+                    }                  
                 }
             }           
         }       

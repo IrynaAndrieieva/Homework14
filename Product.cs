@@ -17,6 +17,7 @@ namespace Homework14
             if (obj == null) return 1;
 
             Product product = obj as Product;
+
             if (product != null)
                 return this.ID.CompareTo(product.ID);
             else

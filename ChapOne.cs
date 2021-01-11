@@ -38,7 +38,7 @@ namespace Homework14
                                     .OrderBy(item => item.Energy)
                                     .ThenBy(product => product.Name).ToList().AsReadOnly());
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             foreach (var item in whereAndOrder)
             {
@@ -49,7 +49,7 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test2");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             var selectCollection = products.Select(product => product.Energy)
                                            .OrderByDescending(product => product).ToList().AsReadOnly();
@@ -63,7 +63,7 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test First");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             var first = products.First();
 
@@ -72,7 +72,7 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test Last and LastOrDefault ");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             var last = products.Last();
             Console.WriteLine(last);
@@ -83,7 +83,7 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test GroupBy");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             var groupByCollection = products.GroupBy(product => product.Energy);
 
@@ -100,7 +100,7 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test Reverse");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             products.Reverse();
 
@@ -112,21 +112,21 @@ namespace Homework14
 
             Console.WriteLine("__________");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             Console.WriteLine($"Test All: {products.All(item => item.Energy == 10)}");
             Console.WriteLine($"Test Any: {products.Any(item => item.Energy == 10)}");
 
             var prod = new Product();
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
-            Console.WriteLine($"Test Contains: {products.Contains(prod)}"); //не принадлежить коллекции products
+            Console.WriteLine($"Test Contains: {products.Contains(prod)}"); //не принадлежит коллекции products
 
             Console.WriteLine("__________");
             Console.WriteLine("Test Union. Before union");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             var array = new int[] { 1, 2, 3, 4, 5 };
             var array2 = new int[] { 1, 2, 3, 7, 8, 9 };
@@ -146,7 +146,7 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test Intersect");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             var intersect = array.Intersect(array2);
 
@@ -158,7 +158,7 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test Except");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             var except = array2.Except(array);
 
@@ -170,7 +170,7 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test Skip and Take");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             var skipAndTake = array.Skip(2).Take(1);
 
@@ -182,7 +182,7 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test Single Or Default");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             var single = products.SingleOrDefault(p => p.Name == "Product9");
 
@@ -191,7 +191,7 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test Element At");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             var elementAt = products.ElementAt(5);
 
@@ -205,7 +205,7 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test Add Async");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             var products = new CustomList<Product>();
 
@@ -229,7 +229,7 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test AddRangeAsync");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             var testProduct = new List<Product>();
 
@@ -239,7 +239,7 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test RemoveItemAsync");
 
-            actions.LoggerInfo();
+            actions.LoggerInfoConslAndFile();
 
             var productToDete = products.GetByIndex(6);
 
