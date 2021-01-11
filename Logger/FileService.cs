@@ -25,20 +25,29 @@
 
             string writePath = @"D:\Log\Log.txt";
 
-            int Id = 0;
+            int Id;
 
-            for (Id = 0; Id < 11; Id++)
+            for (Id = 0; Id < 12; Id++)
             {
-                using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                if (Id < 11)
                 {
-                    sw.WriteLine(string.Format("{0}: {1}: {2}", DateTime.Now.ToLongTimeString(), typeLog, message) + Id);
+                    using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                    {
+                        sw.WriteLine(string.Format("{0}: {1}: {2}", DateTime.Now.ToLongTimeString(), typeLog, message) + Id);
+                    }                   
                 }
-            }
-            if (Id == 10)
-            {
-                Notify?.Invoke($"At the moment in the file {Id}");   // 2.Вызов события
-            }
+                else
+                {
+                    Notify?.Invoke($"At the moment in the file {Id}");   // 2.Вызов события
 
+                    string text = "At the moment in the file over 10";
+
+                    using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                    {
+                        sw.WriteLine(text);
+                    }
+                }
+            }           
         }       
     }
 }
