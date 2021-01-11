@@ -8,14 +8,9 @@ using System.Threading.Tasks;
 namespace Homework14
 {
     internal sealed class Loger
-    {
+    {       
         private static readonly Loger instance = new Loger();
-
-        private Loger()
-        {
-        }
-
-      
+     
         internal static Loger Instance
         {
             get

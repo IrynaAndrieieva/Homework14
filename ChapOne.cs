@@ -49,132 +49,163 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test2");
 
-            //    var selectCollection = products.Select(product => product.Energy)
-            //                                   .OrderByDescending(product => product).ToList().AsReadOnly();
+            actions.LoggerInfo();
 
-            //    foreach (var item in selectCollection)
-            //    {
+            var selectCollection = products.Select(product => product.Energy)
+                                           .OrderByDescending(product => product).ToList().AsReadOnly();
 
-            //        Console.WriteLine(item);
-            //    }
+            foreach (var item in selectCollection)
+            {
 
-            //    Console.WriteLine("__________");
-            //    Console.WriteLine("Test First");
+                Console.WriteLine(item);
+            }
 
-            //    var first = products.First();
+            Console.WriteLine("__________");
+            Console.WriteLine("Test First");
 
-            //    Console.WriteLine(first);
+            actions.LoggerInfo();
 
-            //    Console.WriteLine("__________");
-            //    Console.WriteLine("Test Last and LastOrDefault ");
+            var first = products.First();
 
-            //    var last = products.Last();
-            //    Console.WriteLine(last);
+            Console.WriteLine(first);
 
-            //    var lastOrDef = products.LastOrDefault();
-            //    Console.WriteLine(lastOrDef);
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Last and LastOrDefault ");
 
-            //    Console.WriteLine("__________");
-            //    Console.WriteLine("Test GroupBy");
+            actions.LoggerInfo();
 
-            //    var groupByCollection = products.GroupBy(product => product.Energy);
+            var last = products.Last();
+            Console.WriteLine(last);
 
-            //    foreach (var group in groupByCollection)
-            //    {
-            //        Console.WriteLine($"Key: {group.Key}");
-            //        foreach (var item in group)
-            //        {
-            //            Console.WriteLine($"\t{item}");
-            //        }
-            //    }
+            var lastOrDef = products.LastOrDefault();
+            Console.WriteLine(lastOrDef);
+
+            Console.WriteLine("__________");
+            Console.WriteLine("Test GroupBy");
+
+            actions.LoggerInfo();
+
+            var groupByCollection = products.GroupBy(product => product.Energy);
+
+            foreach (var group in groupByCollection)
+            {
+                Console.WriteLine($"Key: {group.Key}");
+                foreach (var item in group)
+                {
+                    Console.WriteLine($"\t{item}");
+                }
+            }
 
 
-            //    Console.WriteLine("__________");
-            //    Console.WriteLine("Test Reverse");
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Reverse");
 
-            //    products.Reverse();
+            actions.LoggerInfo();
 
-            //    foreach (var item in products)
-            //    {
+            products.Reverse();
 
-            //        Console.WriteLine(item);
-            //    }
+            foreach (var item in products)
+            {
 
-            //    Console.WriteLine("__________");
+                Console.WriteLine(item);
+            }
 
-            //    Console.WriteLine($"Test All: {products.All(item => item.Energy == 10)}");
-            //    Console.WriteLine($"Test Any: {products.Any(item => item.Energy == 10)}");
+            Console.WriteLine("__________");
 
-            //    var prod = new Product();
-            //    Console.WriteLine($"Test Contains: {products.Contains(prod)}"); //не принадлежить коллекции products
+            actions.LoggerInfo();
 
-            //    Console.WriteLine("__________");
-            //    Console.WriteLine("Test Union. Before union");
+            Console.WriteLine($"Test All: {products.All(item => item.Energy == 10)}");
+            Console.WriteLine($"Test Any: {products.Any(item => item.Energy == 10)}");
 
-            //    var array = new int[] { 1, 2, 3, 4, 5 };
-            //    var array2 = new int[] { 1, 2, 3, 7, 8, 9 };
+            var prod = new Product();
 
-            //    foreach (var item in array)
-            //    {
-            //        Console.WriteLine(item);
-            //    }
-            //    Console.WriteLine("After union");
-            //    var union = array.Union(array2);
+            actions.LoggerInfo();
 
-            //    foreach (var item in union)
-            //    {
-            //        Console.WriteLine(item);
-            //    }
+            Console.WriteLine($"Test Contains: {products.Contains(prod)}"); //не принадлежить коллекции products
 
-            //    Console.WriteLine("__________");
-            //    Console.WriteLine("Test Intersect");
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Union. Before union");
 
-            //    var intersect = array.Intersect(array2);
+            actions.LoggerInfo();
 
-            //    foreach (var item in intersect)
-            //    {
-            //        Console.WriteLine(item);
-            //    }
+            var array = new int[] { 1, 2, 3, 4, 5 };
+            var array2 = new int[] { 1, 2, 3, 7, 8, 9 };
 
-            //    Console.WriteLine("__________");
-            //    Console.WriteLine("Test Except");
+            foreach (var item in array)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("After union");
+            var union = array.Union(array2);
 
-            //    var except = array2.Except(array);
+            foreach (var item in union)
+            {
+                Console.WriteLine(item);
+            }
 
-            //    foreach (var item in except)
-            //    {
-            //        Console.WriteLine(item);
-            //    }
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Intersect");
 
-            //    Console.WriteLine("__________");
-            //    Console.WriteLine("Test Skip and Take");
+            actions.LoggerInfo();
 
-            //    var skipAndTake = array.Skip(2).Take(1);
+            var intersect = array.Intersect(array2);
 
-            //    foreach (var item in skipAndTake)
-            //    {
-            //        Console.WriteLine(item);
-            //    }
+            foreach (var item in intersect)
+            {
+                Console.WriteLine(item);
+            }
 
-            //    Console.WriteLine("__________");
-            //    Console.WriteLine("Test Single Or Default");
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Except");
 
-            //    var single = products.SingleOrDefault(p => p.Name == "Product9");
+            actions.LoggerInfo();
 
-            //    Console.WriteLine(single);
+            var except = array2.Except(array);
 
-            //    Console.WriteLine("__________");
-            //    Console.WriteLine("Test Element At");
+            foreach (var item in except)
+            {
+                Console.WriteLine(item);
+            }
 
-            //    var elementAt = products.ElementAt(5);
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Skip and Take");
 
-            //    Console.WriteLine(elementAt);           
+            actions.LoggerInfo();
+
+            var skipAndTake = array.Skip(2).Take(1);
+
+            foreach (var item in skipAndTake)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Single Or Default");
+
+            actions.LoggerInfo();
+
+            var single = products.SingleOrDefault(p => p.Name == "Product9");
+
+            Console.WriteLine(single);
+
+            Console.WriteLine("__________");
+            Console.WriteLine("Test Element At");
+
+            actions.LoggerInfo();
+
+            var elementAt = products.ElementAt(5);
+
+            Console.WriteLine(elementAt);
         }
 
         static public async Task Asynchro()
         {
+            Actions actions = new Actions();
+
             Console.WriteLine("__________");
             Console.WriteLine("Test Add Async");
+
+            actions.LoggerInfo();
 
             var products = new CustomList<Product>();
 
@@ -198,6 +229,8 @@ namespace Homework14
             Console.WriteLine("__________");
             Console.WriteLine("Test AddRangeAsync");
 
+            actions.LoggerInfo();
+
             var testProduct = new List<Product>();
 
             await products.AddRangeAsync(testProduct);
@@ -205,6 +238,8 @@ namespace Homework14
 
             Console.WriteLine("__________");
             Console.WriteLine("Test RemoveItemAsync");
+
+            actions.LoggerInfo();
 
             var productToDete = products.GetByIndex(6);
 
