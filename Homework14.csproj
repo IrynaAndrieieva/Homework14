@@ -44,10 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChapOne.cs" />
-    <Compile Include="CustomList.cs" />
+    <Compile Include="List\CustomList.cs" />
+    <Compile Include="Logger\Actions.cs" />
     <Compile Include="Logger\FileService.cs" />
-    <Compile Include="ICustomList.cs" />
-    <Compile Include="Logger\Logger.cs" />
+    <Compile Include="List\ICustomList.cs" />
+    <Compile Include="Logger\Loger.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

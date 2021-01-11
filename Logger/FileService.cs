@@ -9,14 +9,14 @@
     {       
         public static void WriteLine(string typeLog, string message)
         {
-            string dirpath = @"E:\Log";
+            string dirpath = @"D:\Log";
             DirectoryInfo dirInfo = new DirectoryInfo(dirpath);
             if (!dirInfo.Exists)
             {
                 dirInfo.Create();
             }
 
-            string writePath = @"E:\Log\Log.txt";
+            string writePath = @"D:\Log\Log.txt";
 
             // создание тхт файла
             using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
